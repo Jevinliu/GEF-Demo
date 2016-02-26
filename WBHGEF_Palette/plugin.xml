@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="wbhgef.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="GEF Perspective"
+            class="wbhgef.Perspective"
+            id="WBHGEF.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="wbhgef.editor.MyGraphicalEditor"
+            contributorClass="wbhgef.actions.MyGraphicalEditorActionBarContributor"
+            default="false"
+            id="WBHGEF.mygraphicaleditor"
+            name="MyGraphicalEditor">
+      </editor>
+   </extension>
+
+</plugin>
