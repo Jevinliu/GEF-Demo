@@ -29,5 +29,20 @@
             name="MyGraphicalEditor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="wbhgef.radio"
+            name="Radio">
+      </command>
+      <command
+            id="wbhgef.radio2"
+            name="Radio2">
+      </command>
+      <command
+            id="wbhgef.export_img"
+            name="Export">
+      </command>
+   </extension>
 
 </plugin>

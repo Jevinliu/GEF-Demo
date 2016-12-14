@@ -27,6 +27,7 @@ import org.eclipse.gef.palette.PaletteSeparator;
 import org.eclipse.gef.palette.SelectionToolEntry;
 import org.eclipse.gef.ui.actions.ActionRegistry;
 import org.eclipse.gef.ui.actions.GEFActionConstants;
+import org.eclipse.gef.ui.actions.PrintAction;
 import org.eclipse.gef.ui.actions.ZoomInAction;
 import org.eclipse.gef.ui.actions.ZoomOutAction;
 import org.eclipse.gef.ui.palette.PaletteViewer;
@@ -48,7 +49,10 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 
 import wbhgef.actions.AppContextMenuProvider;
 import wbhgef.actions.CopyNodeAction;
+import wbhgef.actions.ExportImgAction;
 import wbhgef.actions.PasteNodeAction;
+import wbhgef.actions.RadioAction;
+import wbhgef.actions.RadioAction2;
 import wbhgef.actions.RenameAction;
 import wbhgef.editpart.AppEditPartFactory;
 import wbhgef.model.Employee;
@@ -126,7 +130,18 @@ public class MyGraphicalEditor extends GraphicalEditorWithPalette {
 		IAction pasteAction = new PasteNodeAction(this);
 		registry.registerAction(pasteAction);
 		getSelectionActions().add(pasteAction.getId());
-
+		
+		IAction printAction = new PrintAction(this); // “this” is your IEditorPart-derived editor
+		registry.registerAction(printAction);
+		
+		createAction(new RadioAction(this));
+		createAction(new RadioAction2(this));
+		createAction(new ExportImgAction(this));
+	}
+	
+	private void createAction(IAction action){
+		getActionRegistry().registerAction(action);
+		getSelectionActions().add(action.getId());
 	}
 
 	@Override
